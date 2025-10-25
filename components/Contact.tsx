@@ -104,7 +104,7 @@ export default function Contact() {
                   <Mail className="w-6 h-6 text-primary-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900">Email</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">Email</h4>
                   <p className="text-gray-600 dark:text-gray-300">ahmed@example.com</p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function Contact() {
                   <Phone className="w-6 h-6 text-primary-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900">Phone</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">Phone</h4>
                   <p className="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</p>
                 </div>
               </div>
@@ -124,7 +124,7 @@ export default function Contact() {
                   <MapPin className="w-6 h-6 text-primary-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900">Location</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">Location</h4>
                   <p className="text-gray-600 dark:text-gray-300">San Francisco, CA</p>
                 </div>
               </div>
@@ -132,7 +132,7 @@ export default function Contact() {
 
             {/* Social Links */}
             <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                 Follow Me
               </h4>
               <div className="flex gap-4">
