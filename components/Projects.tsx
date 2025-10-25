@@ -107,7 +107,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="card group dark:bg-gray-800 dark:border-gray-700"
+              className="card group dark:bg-gray-900 dark:border-gray-600"
             >
               <div className="relative h-64 overflow-hidden rounded-t-xl">
                 <Image
@@ -193,7 +193,7 @@ export default function Projects() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="card group dark:bg-gray-800 dark:border-gray-700"
+                  className="card group dark:bg-gray-900 dark:border-gray-600"
                 >
                   <div className="relative h-48 overflow-hidden rounded-t-xl">
                     <Image

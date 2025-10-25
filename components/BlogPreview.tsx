@@ -77,7 +77,7 @@ export default function BlogPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="card group cursor-pointer dark:bg-gray-800 dark:border-gray-700"
+              className="card group cursor-pointer dark:bg-gray-900 dark:border-gray-600"
               onClick={() => window.open(post.url, '_blank')}
             >
               <div className="relative h-48 overflow-hidden rounded-t-xl">
