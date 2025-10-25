@@ -82,7 +82,7 @@ export default function Contact() {
           <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Have a project in mind or want to discuss backend development? 
-            I'd love to hear from you. Let's build something amazing together!
+            I&#39;d love to hear from you. Let&#39;s build something amazing together!
           </p>
         </motion.div>
 
@@ -95,7 +95,7 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Let's Connect
+              Let&#39;s Connect
             </h3>
             
             <div className="space-y-6 mb-8">

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 
 interface BlogPost {
   id: number
@@ -80,10 +81,11 @@ export default function BlogPreview() {
               onClick={() => window.open(post.url, '_blank')}
             >
               <div className="relative h-48 overflow-hidden rounded-t-xl">
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full">

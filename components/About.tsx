@@ -70,8 +70,8 @@ export default function About() {
             </p>
             
             <p className="text-lg text-gray-600 leading-relaxed">
-              I'm passionate about writing clean, maintainable code and implementing best practices 
-              in software architecture. When I'm not coding, I enjoy sharing my knowledge through 
+              I&#39;m passionate about writing clean, maintainable code and implementing best practices 
+              in software architecture. When I&#39;m not coding, I enjoy sharing my knowledge through 
               technical blogging and contributing to open-source projects.
             </p>
           </motion.div>
