@@ -24,19 +24,35 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    // In a real application, you would send the data to your backend
-    console.log('Form submitted:', formData)
-    
-    setIsSubmitting(false)
-    setSubmitStatus('success')
-    setFormData({ name: '', email: '', message: '' })
-    
-    // Reset success message after 3 seconds
-    setTimeout(() => setSubmitStatus('idle'), 3000)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+        // Reset success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000)
+      } else {
+        setSubmitStatus('error')
+        // Reset error message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000)
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+      // Reset error message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const socialLinks = [
@@ -247,7 +263,7 @@ export default function Contact() {
                   animate={{ opacity: 1, y: 0 }}
                   className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
                 >
-                  Sorry, there was an error sending your message. Please try again.
+                  Sorry, there was an error sending your message. Please try again or contact me directly at dev.ahmed.elsied@gmail.com
                 </motion.div>
               )}
             </form>
