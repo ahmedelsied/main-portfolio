@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import emailjs from '@emailjs/browser'
+import emailjs from '@emailjs/nodejs'
 
 export async function POST(request: NextRequest) {
   try {
