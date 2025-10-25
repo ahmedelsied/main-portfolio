@@ -72,7 +72,7 @@ export default function Contact() {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/ahmed',
+      url: 'https://github.com/ahmedelsied',
       icon: Github,
       color: 'hover:text-gray-900'
     },

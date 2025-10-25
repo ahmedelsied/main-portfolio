@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, X, Mail, Heart } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -9,22 +9,22 @@ export default function Footer() {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/ahmed',
+      url: 'https://github.com/ahmedelsied',
       icon: Github
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/ahmed',
+      url: 'https://linkedin.com/in/dev-ahmed-elsied',
       icon: Linkedin
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/ahmed',
-      icon: Twitter
+      name: 'X',
+      url: 'https://x.com/Dev_A_Elsayed',
+      icon: X
     },
     {
       name: 'Email',
-      url: 'mailto:ahmed@example.com',
+      url: 'mailto:dev.ahmed.elsied@gmail.com',
       icon: Mail
     }
   ]
@@ -57,7 +57,7 @@ export default function Footer() {
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <h3 className="text-2xl font-bold mb-4">
-                Ahmed Elsayed
+                Dev Ahmed Elsayed
               </h3>
               <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
                 Backend Software Engineer passionate about building scalable, 
@@ -104,9 +104,9 @@ export default function Footer() {
                 Contact
               </h4>
               <div className="space-y-2 text-gray-400">
-                <p>ahmed@example.com</p>
-                <p>+1 (555) 123-4567</p>
-                <p>San Francisco, CA</p>
+                <p><a href="mailto:dev.ahmed.elsied@gmail.com">dev.ahmed.elsied@gmail.com</a></p>
+                <p><a href="tel:+201024404534">+201024404534</a></p>
+                <p>Mansoura, Egypt</p>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {currentYear} Ahmed Elsayed. All rights reserved.
+              © {currentYear} Dev Ahmed Elsayed. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm flex items-center gap-1">
               Made with <Heart className="w-4 h-4 text-red-500" /> using Next.js & Tailwind CSS
