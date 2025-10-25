@@ -57,7 +57,7 @@ export default function Footer() {
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <h3 className="text-2xl font-bold mb-4">
-                Ahmed
+                Ahmed Elsayed
               </h3>
               <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
                 Backend Software Engineer passionate about building scalable, 
@@ -122,7 +122,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {currentYear} Ahmed. All rights reserved.
+              © {currentYear} Ahmed Elsayed. All rights reserved.
             </p>
             <p className="text-gray-400 text-sm flex items-center gap-1">
               Made with <Heart className="w-4 h-4 text-red-500" /> using Next.js & Tailwind CSS

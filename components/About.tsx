@@ -51,7 +51,7 @@ export default function About() {
             <div className="relative w-64 h-64 mx-auto lg:mx-0 mb-8">
               <Image
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
-                alt="Ahmed - Backend Engineer"
+                alt="Ahmed Elsayed - Backend Engineer"
                 fill
                 className="rounded-full object-cover shadow-2xl"
                 priority
@@ -115,7 +115,7 @@ export default function About() {
                 <div className="text-gray-600">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent-600 mb-2">50+</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
                 <div className="text-gray-600">Projects Completed</div>
               </div>
               <div className="text-center">
@@ -123,7 +123,7 @@ export default function About() {
                 <div className="text-gray-600">Client Satisfaction</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent-600 mb-2">24/7</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">24/7</div>
                 <div className="text-gray-600">Support Available</div>
               </div>
             </motion.div>

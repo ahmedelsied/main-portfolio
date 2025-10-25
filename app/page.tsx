@@ -8,11 +8,21 @@ import Footer from '@/components/Footer'
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Hero />
-      <About />
-      <Projects />
-      <BlogPreview />
-      <Contact />
+      <section id="home">
+        <Hero />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="blog">
+        <BlogPreview />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
       <Footer />
     </main>
   )

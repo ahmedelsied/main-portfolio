@@ -1,6 +1,6 @@
-# Ahmed's Personal Portfolio Website
+# Ahmed Elsayed's Personal Portfolio Website
 
-A modern, responsive personal portfolio website built with Next.js 14, TypeScript, and Tailwind CSS. This portfolio showcases Ahmed's work as a backend software engineer specializing in Laravel, PHP, and modern web technologies.
+A modern, responsive personal portfolio website built with Next.js 14, TypeScript, and Tailwind CSS. This portfolio showcases Ahmed Elsayed's work as a backend software engineer specializing in Laravel, PHP, and modern web technologies.
 
 ## 🚀 Features
 
@@ -163,4 +163,4 @@ If you have any questions or need help customizing the portfolio, feel free to r
 
 ---
 
-Made with ❤️ by Ahmed
+Made with ❤️ by Ahmed Elsayed
