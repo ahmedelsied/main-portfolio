@@ -65,7 +65,7 @@ export default function About() {
                 </p>
                 
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  My expertise spans across <span className="font-semibold text-accent-600">domain-driven design (DDD)</span>, e-commerce platforms, and both mobile & 
+                  My expertise spans across <span className="font-semibold text-primary-600">domain-driven design (DDD)</span>, e-commerce platforms, and both mobile & 
                   web applications. I&#39;m passionate about writing clean, maintainable code and implementing best practices 
                   in software architecture.
                 </p>
