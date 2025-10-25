@@ -200,7 +200,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h2 className="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 mb-8 font-medium">
-            Backend Engineer & Tech Blogger
+            Senior Backend Engineer
           </h2>
         </motion.div>
 
@@ -210,8 +210,10 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Building scalable backend solutions with Laravel, PHP, and modern technologies. 
-            Passionate about clean code, domain-driven design, and creating exceptional digital experiences.
+            Results-driven Software Engineer with 6 years of experience in backend development,
+            including 2 years of freelance projects. Skilled in designing and optimizing scalable,
+            secure, and high-performance applications using modern technologies such as PHP, Laravel, and MySQL. 
+            Adept at tackling complex backend challenges, improving system architecture, and delivering impactful software solutions.
           </p>
         </motion.div>
 

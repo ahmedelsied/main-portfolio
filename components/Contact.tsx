@@ -48,19 +48,19 @@ export default function Contact() {
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/ahmed',
+      url: 'https://linkedin.com/in/dev-ahmed-elsied',
       icon: Linkedin,
       color: 'hover:text-blue-600'
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/ahmed',
+      url: 'https://twitter.com/ahmedelsied',
       icon: Twitter,
       color: 'hover:text-blue-400'
     },
     {
       name: 'Email',
-      url: 'mailto:ahmed@example.com',
+      url: 'mailto:dev.ahmed.elsied@gmail.com',
       icon: Mail,
       color: 'hover:text-primary-600'
     }
@@ -105,7 +105,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">Email</h4>
-                  <p className="text-gray-600 dark:text-gray-300">ahmed@example.com</p>
+                  <p className="text-gray-600 dark:text-gray-300">dev.ahmed.elsied@gmail.com</p>
                 </div>
               </div>
               
@@ -115,7 +115,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">Phone</h4>
-                  <p className="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</p>
+                  <p className="text-gray-600 dark:text-gray-300">+201024404534</p>
                 </div>
               </div>
               
@@ -125,7 +125,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">Location</h4>
-                  <p className="text-gray-600 dark:text-gray-300">San Francisco, CA</p>
+                  <p className="text-gray-600 dark:text-gray-300">Mansoura, Egypt</p>
                 </div>
               </div>
             </div>
