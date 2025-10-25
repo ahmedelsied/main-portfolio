@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ahmed-elsayed-portfolio.vercel.app'),
   title: 'Ahmed Elsayed - Backend Engineer & Tech Blogger',
   description: 'Experienced backend software engineer specializing in Laravel, PHP, and modern web technologies. Building scalable e-commerce and mobile applications.',
   keywords: 'backend engineer, Laravel, PHP, software development, e-commerce, API design, microservices',
@@ -30,8 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        {children}
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
