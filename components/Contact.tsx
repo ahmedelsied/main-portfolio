@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Mail, Github, Linkedin, Twitter, Send, MapPin, Phone } from 'lucide-react'
+import { Mail, Github, Linkedin, X, Send, MapPin, Phone } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 
 export default function Contact() {
@@ -28,12 +28,23 @@ export default function Contact() {
     setSubmitStatus('idle')
     
     try {
+
+      // Check if environment variables are available
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+
+      if (!publicKey || !serviceId || !templateId) {
+        console.warn('EmailJS configuration is missing. Please set up your environment variables.')
+        throw new Error('Email service is not configured. Please contact me directly at dev.ahmed.elsied@gmail.com')
+      }
+
       // Initialize EmailJS with public key from environment variables
-      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string)
+      emailjs.init(publicKey)
 
       const response = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+        serviceId,
+        templateId,
         formData
       )
 
@@ -72,9 +83,9 @@ export default function Contact() {
       color: 'hover:text-blue-600'
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/ahmedelsied',
-      icon: Twitter,
+      name: 'X',
+      url: 'https://x.com/Dev_A_Elsayed',
+      icon: X,
       color: 'hover:text-blue-400'
     },
     {
@@ -124,7 +135,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">Email</h4>
-                  <p className="text-gray-600 dark:text-gray-300">dev.ahmed.elsied@gmail.com</p>
+                  <a 
+                    href="mailto:dev.ahmed.elsied@gmail.com"
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
+                  >
+                    dev.ahmed.elsied@gmail.com
+                  </a>
                 </div>
               </div>
               
@@ -134,7 +150,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">Phone</h4>
-                  <p className="text-gray-600 dark:text-gray-300">+201024404534</p>
+                  <a 
+                    href="tel:+201024404534"
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
+                  >
+                    +201024404534
+                  </a>
                 </div>
               </div>
               

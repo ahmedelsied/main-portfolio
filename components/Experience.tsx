@@ -11,11 +11,11 @@ const experiences = [
     period: '11/2024 – Present',
     type: 'Full-time',
     achievements: [
-      'Developed and maintained scalable Laravel applications using Spatie packages and Filament for admin dashboards.',
       'Designed and optimized relational databases (MySQL/PostgreSQL), creating well-structured schemas and writing complex queries for improved performance.',
       'Conducted code reviews to ensure adherence to Laravel best practices, proper use of Spatie packages, and secure, maintainable code.',
       'Collaborated with the DevOps team to streamline deployments using Laravel Forge/Envoyer and troubleshoot server-side issues.',
       'Built RESTful APIs with Laravel Sanctum/Passport for secure integration with frontend apps and third-party services.',
+      'Developed and maintained scalable Laravel applications using Spatie packages and Filament for admin dashboards.',
       'Created custom Filament components and dashboards to enhance internal tooling and user experience.',
       'Supported team growth by mentoring junior developers on Laravel, Eloquent optimization, and package integration.'
     ]
