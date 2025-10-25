@@ -79,7 +79,7 @@ export default function Projects() {
   const otherProjects = projects.filter(project => !project.featured)
 
   return (
-    <section id="projects" className="section-padding bg-gray-50">
+    <section id="projects" className="section-padding bg-gray-50 dark:bg-gray-800">
       <div className="container-max-width">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -88,11 +88,11 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Featured Projects
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Here are some of my recent projects that showcase my expertise in backend development, 
             API design, and modern web technologies.
           </p>
@@ -107,7 +107,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="card group"
+              className="card group dark:bg-gray-800 dark:border-gray-700"
             >
               <div className="relative h-64 overflow-hidden rounded-t-xl">
                 <Image
@@ -115,16 +115,18 @@ export default function Projects() {
                   alt={project.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                   {project.longDescription}
                 </p>
                 
@@ -178,7 +180,7 @@ export default function Projects() {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Other Projects
               </h3>
             </motion.div>
@@ -191,7 +193,7 @@ export default function Projects() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="card group"
+                  className="card group dark:bg-gray-800 dark:border-gray-700"
                 >
                   <div className="relative h-48 overflow-hidden rounded-t-xl">
                     <Image
@@ -203,11 +205,11 @@ export default function Projects() {
                   </div>
                   
                   <div className="p-6">
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {project.title}
                     </h4>
                     
-                    <p className="text-gray-600 mb-4 text-sm">
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
                       {project.description}
                     </p>
                     
@@ -215,13 +217,13 @@ export default function Projects() {
                       {project.techStack.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.techStack.length > 3 && (
-                        <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                        <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full">
                           +{project.techStack.length - 3} more
                         </span>
                       )}
@@ -243,7 +245,7 @@ export default function Projects() {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-600 hover:text-gray-700 text-sm font-medium ml-4"
+                          className="text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 text-sm font-medium ml-4"
                         >
                           GitHub
                         </a>

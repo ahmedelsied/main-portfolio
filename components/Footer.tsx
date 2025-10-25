@@ -44,7 +44,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white">
       <div className="container-max-width">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

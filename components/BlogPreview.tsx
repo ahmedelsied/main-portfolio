@@ -50,7 +50,7 @@ const blogPosts: BlogPost[] = [
 
 export default function BlogPreview() {
   return (
-    <section id="blog" className="section-padding bg-white">
+    <section id="blog" className="section-padding bg-white dark:bg-gray-900">
       <div className="container-max-width">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,11 +59,11 @@ export default function BlogPreview() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Latest Blog Posts
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Sharing insights, tutorials, and best practices in backend development, 
             software architecture, and modern web technologies.
           </p>
@@ -77,7 +77,7 @@ export default function BlogPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="card group cursor-pointer"
+              className="card group cursor-pointer dark:bg-gray-800 dark:border-gray-700"
               onClick={() => window.open(post.url, '_blank')}
             >
               <div className="relative h-48 overflow-hidden rounded-t-xl">
@@ -86,6 +86,8 @@ export default function BlogPreview() {
                   alt={post.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  loading="lazy"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full">
@@ -95,15 +97,15 @@ export default function BlogPreview() {
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                   {post.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                   {post.excerpt}
                 </p>
                 
-                <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />

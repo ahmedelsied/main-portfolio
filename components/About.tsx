@@ -24,7 +24,7 @@ const skills = [
 
 export default function About() {
   return (
-    <section id="about" className="section-padding bg-white">
+    <section id="about" className="section-padding bg-white dark:bg-gray-900">
       <div className="container-max-width">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -33,7 +33,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full"></div>
@@ -55,21 +55,22 @@ export default function About() {
                 fill
                 className="rounded-full object-cover shadow-2xl"
                 priority
+                sizes="(max-width: 768px) 256px, 256px"
               />
             </div>
             
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Backend Software Engineer
             </h3>
             
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
               With over 5 years of experience in backend development, I specialize in building 
               robust, scalable applications using Laravel 9/10 and PHP 8.1/8.2/11. My expertise 
               spans across domain-driven design (DDD), e-commerce platforms, and both mobile & 
               web applications.
             </p>
             
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               I&#39;m passionate about writing clean, maintainable code and implementing best practices 
               in software architecture. When I&#39;m not coding, I enjoy sharing my knowledge through 
               technical blogging and contributing to open-source projects.
@@ -83,7 +84,7 @@ export default function About() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-2xl font-bold text-gray-900 mb-6 text-center lg:text-left">
+            <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center lg:text-left">
               Technical Skills
             </h4>
             
@@ -112,19 +113,19 @@ export default function About() {
             >
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary-600 mb-2">5+</div>
-                <div className="text-gray-600">Years Experience</div>
+                <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
-                <div className="text-gray-600">Projects Completed</div>
+                <div className="text-gray-600 dark:text-gray-400">Projects Completed</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary-600 mb-2">100%</div>
-                <div className="text-gray-600">Client Satisfaction</div>
+                <div className="text-gray-600 dark:text-gray-400">Client Satisfaction</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary-600 mb-2">24/7</div>
-                <div className="text-gray-600">Support Available</div>
+                <div className="text-gray-600 dark:text-gray-400">Support Available</div>
               </div>
             </motion.div>
           </motion.div>

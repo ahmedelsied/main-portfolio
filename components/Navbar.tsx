@@ -58,6 +58,7 @@ export default function Navbar() {
             <button
               onClick={() => scrollToSection('#home')}
               className="text-2xl font-bold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300"
+              aria-label="Ahmed Elsayed - Go to homepage"
             >
               Ahmed Elsayed<span className="text-primary-600">.</span>
             </button>
@@ -75,6 +76,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
+                  aria-label={`Navigate to ${item.name} section`}
                 >
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
@@ -115,6 +117,8 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none focus:text-primary-600 dark:focus:text-primary-400"
               whileTap={{ scale: 0.95 }}
+              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isOpen}
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
