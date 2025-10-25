@@ -1,3 +1,4 @@
 /node_modules
 /.next
 context.md
+.env.local
