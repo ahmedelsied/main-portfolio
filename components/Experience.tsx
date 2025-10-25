@@ -11,7 +11,7 @@ const experiences = [
     period: '11/2024 – Present',
     type: 'Full-time',
     achievements: [
-      'Developed and maintained scalable Laravel applications, leveraging Spatie packages (permissions, activity log) and Filament to build efficient admin dashboards and backend systems.',
+      'Developed and maintained scalable Laravel applications using Spatie packages and Filament for admin dashboards.',
       'Designed and optimized relational databases (MySQL/PostgreSQL), creating well-structured schemas and writing complex queries for improved performance.',
       'Conducted code reviews to ensure adherence to Laravel best practices, proper use of Spatie packages, and secure, maintainable code.',
       'Collaborated with the DevOps team to streamline deployments using Laravel Forge/Envoyer and troubleshoot server-side issues.',
@@ -114,14 +114,17 @@ export default function Experience() {
               <div className={`ml-12 md:ml-0 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
                 <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300">
                   <div className="flex items-start justify-between mb-4">
-                    <div>
+                    <div className="text-left">
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                         {exp.position}
                       </h3>
-                      <div className="flex items-center gap-2 text-primary-600 font-semibold mb-2">
+                      <div className="flex items-center gap-2 text-primary-600 font-semibold mb-1">
                         <Building2 className="w-4 h-4" />
                         {exp.company}
                       </div>
+                      <span className="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-3 py-1 rounded-full text-xs font-medium">
+                        {exp.type}
+                      </span>
                     </div>
                     <div className="text-right">
                       <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400 text-sm mb-1">
@@ -133,12 +136,6 @@ export default function Experience() {
                         {exp.location}
                       </div>
                     </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <span className="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 px-3 py-1 rounded-full text-sm font-medium">
-                      {exp.type}
-                    </span>
                   </div>
 
                   <ul className="space-y-2">
