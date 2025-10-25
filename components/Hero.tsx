@@ -2,31 +2,38 @@
 
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 export default function Hero() {
+  const [isClient, setIsClient] = useState(false)
+  
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   const scrollToProjects = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  // Generate random particles
-  const particles = Array.from({ length: 50 }, (_, i) => ({
+  // Generate random particles - only on client side
+  const particles = isClient ? Array.from({ length: 50 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
     size: Math.random() * 4 + 1,
     delay: Math.random() * 2,
     duration: Math.random() * 3 + 2,
-  }))
+  })) : []
 
-  // Generate geometric shapes
-  const shapes = Array.from({ length: 8 }, (_, i) => ({
+  // Generate geometric shapes - only on client side
+  const shapes = isClient ? Array.from({ length: 8 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
     rotation: Math.random() * 360,
     scale: Math.random() * 0.5 + 0.5,
     delay: Math.random() * 2,
-  }))
+  })) : []
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">

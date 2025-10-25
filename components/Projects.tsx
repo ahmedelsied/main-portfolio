@@ -201,6 +201,8 @@ export default function Projects() {
                       alt={project.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      loading="lazy"
                     />
                   </div>
                   

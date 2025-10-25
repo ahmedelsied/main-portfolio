@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Mail, Github, Linkedin, Twitter, Send, MapPin, Phone } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -27,15 +28,17 @@ export default function Contact() {
     setSubmitStatus('idle')
     
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+      // Initialize EmailJS with public key from environment variables
+      emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string)
 
-      if (response.ok) {
+      const response = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+        formData
+      )
+
+
+      if (response.status === 200) {
         setSubmitStatus('success')
         setFormData({ name: '', email: '', message: '' })
         // Reset success message after 5 seconds
