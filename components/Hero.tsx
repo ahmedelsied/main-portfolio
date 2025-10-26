@@ -217,10 +217,10 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Results-driven Software Engineer with 6 years of experience in backend development,
-            including 2 years of freelance projects. Skilled in designing and optimizing scalable,
-            secure, and high-performance applications using modern technologies such as PHP, Laravel, and MySQL. 
-            Adept at tackling complex backend challenges, improving system architecture, and delivering impactful software solutions.
+            💼 <strong>Your Backend Development Partner for Business Success</strong> • 
+            I help businesses scale faster and reduce costs by building powerful, secure backend systems that never let you down. 
+            Whether you're launching a startup or scaling an enterprise, I deliver solutions that boost your revenue and delight your customers. 
+            <br></br><em>Let's build something amazing together!</em>
           </p>
         </motion.div>
 

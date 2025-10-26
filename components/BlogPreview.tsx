@@ -18,33 +18,13 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: 'Building Scalable APIs with Laravel 10: Best Practices and Patterns',
-    excerpt: 'Learn how to design and implement scalable RESTful APIs using Laravel 10, covering authentication, rate limiting, caching strategies, and microservices architecture.',
-    date: '2024-01-15',
-    readTime: '8 min read',
-    category: 'Backend Development',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop',
-    url: 'https://blog.ahmed.com/laravel-10-scalable-apis'
-  },
-  {
-    id: 2,
-    title: 'Domain-Driven Design in PHP: A Practical Guide',
-    excerpt: 'Explore how to implement Domain-Driven Design principles in PHP applications, with real-world examples and practical patterns for building maintainable code.',
-    date: '2024-01-08',
-    readTime: '12 min read',
-    category: 'Software Architecture',
-    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop',
-    url: 'https://blog.ahmed.com/domain-driven-design-php'
-  },
-  {
-    id: 3,
-    title: 'Microservices Communication Patterns: When to Use What',
-    excerpt: 'A comprehensive guide to microservices communication patterns, including synchronous vs asynchronous communication, event-driven architecture, and API gateway patterns.',
-    date: '2024-01-01',
+    title: 'Database Replication Explained: Techniques and Challenges',
+    excerpt: 'Most Common Replication Methods in Databases',
+    date: 'Jun 27, 2025',
     readTime: '10 min read',
-    category: 'Microservices',
-    image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=400&fit=crop',
-    url: 'https://blog.ahmed.com/microservices-communication-patterns'
+    category: 'Database',
+    image: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1748338464754/952058f3-df3d-460b-abb1-040d4ea9c706.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp',
+    url: 'https://ahmed-elsayed.hashnode.dev/database-replication-explained-techniques-and-challenges'
   }
 ]
 
@@ -139,7 +119,7 @@ export default function BlogPreview() {
           className="text-center"
         >
           <a
-            href="https://blog.ahmed.com"
+            href="https://ahmed-elsayed.hashnode.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary inline-flex items-center gap-2"
