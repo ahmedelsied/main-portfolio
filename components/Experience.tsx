@@ -3,6 +3,36 @@
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, Building2, Award } from 'lucide-react'
 
+// Function to calculate duration dynamically
+function calculateDuration(period: string): string {
+  const parseDate = (dateStr: string) => {
+    if (dateStr === 'Present' || dateStr.toLowerCase().includes('present')) {
+      return new Date()
+    }
+    const [month, year] = dateStr.split('/')
+    return new Date(parseInt(year), parseInt(month) - 1, 1)
+  }
+
+  const [startStr, endStr] = period.split(' – ')
+  const startDate = parseDate(startStr.trim())
+  const endDate = parseDate(endStr.trim())
+
+  const diffTime = Math.abs(endDate.getTime() - startDate.getTime())
+  const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30.44))
+
+  if (diffMonths < 1) return 'Less than 1 month'
+  if (diffMonths < 12) return `${diffMonths} ${diffMonths === 1 ? 'month' : 'months'}`
+  
+  const years = Math.floor(diffMonths / 12)
+  const remainingMonths = diffMonths % 12
+  
+  if (remainingMonths === 0) {
+    return `${years} ${years === 1 ? 'year' : 'years'}`
+  }
+  
+  return `${years} ${years === 1 ? 'year' : 'years'} ${remainingMonths} ${remainingMonths === 1 ? 'month' : 'months'}`
+}
+
 const experiences = [
   {
     company: 'Robusta Technology Group',
@@ -127,9 +157,12 @@ export default function Experience() {
                       </span>
                     </div>
                     <div className="text-right">
-                      <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400 text-sm mb-1">
+                      <div className="flex items-center gap-2 justify-end text-gray-600 dark:text-gray-400 text-sm mb-1">
                         <Calendar className="w-4 h-4" />
-                        {exp.period}
+                        <span>{exp.period}</span>
+                        <span className="text-primary-700 dark:text-primary-300 px-2 py-0.5 rounded text-xs font-semibold">
+                          {calculateDuration(exp.period)}
+                        </span>
                       </div>
                       <div className="flex items-center gap-1 text-gray-600 dark:text-gray-400 text-sm">
                         <MapPin className="w-4 h-4" />
