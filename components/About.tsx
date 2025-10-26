@@ -112,13 +112,14 @@ export default function About() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <p className="text-lg leading-relaxed text-white/90 mb-6">
-                    With over <span className="font-bold text-white">6 years of experience</span> in backend development, I specialize in building 
-                    robust, scalable applications that drive business growth.
+                    Results-driven Software Engineer with <span className="font-bold text-white">6 years of experience</span> in backend development, including 2 years of 
+                    successful freelance projects. I design and optimize scalable, secure, high-performance applications using modern technologies 
+                    like PHP, Laravel, and MySQL.
                   </p>
                   
                   <p className="text-lg leading-relaxed text-white/90">
-                    My expertise spans <span className="font-bold text-white">domain-driven design (DDD)</span>, e-commerce platforms, 
-                    and both mobile & web applications.
+                    I excel at tackling complex backend challenges, <span className="font-bold text-white">improving system architecture</span>, and delivering impactful solutions. 
+                    Seeking to contribute my expertise to forward-thinking teams while continuing professional growth.
                   </p>
                 </div>
                 
