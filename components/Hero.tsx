@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Download } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 export default function Hero() {
@@ -217,9 +217,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            💼 <strong>Your Backend Development Partner for Business Success</strong> • 
-            I help businesses scale faster and reduce costs by building powerful, secure backend systems that never let you down. 
-            Whether you're launching a startup or scaling an enterprise, I deliver solutions that boost your revenue and delight your customers. 
+            Building powerful backend systems that help businesses scale faster, reduce costs, and grow revenue. 
             <br></br><em>Let's build something amazing together!</em>
           </p>
         </motion.div>
@@ -228,6 +226,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <button
             onClick={scrollToProjects}
@@ -236,6 +235,14 @@ export default function Hero() {
             See My Work
             <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
           </button>
+          <a
+            href="/Ahmed-Elsayed-Backend-Resume.pdf"
+            download
+            className="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2 group"
+          >
+            Download CV
+            <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
+          </a>
         </motion.div>
       </div>
 
