@@ -22,7 +22,7 @@ const projects: Project[] = [
     title: 'E-commerce Platform',
     description: 'Full-featured e-commerce solution with advanced inventory management',
     longDescription: 'A comprehensive e-commerce platform built with Laravel 10, featuring advanced inventory management, payment processing, order tracking, and admin dashboard. Implements domain-driven design principles and microservices architecture.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
     techStack: ['Laravel 10', 'PHP 8.2', 'MySQL', 'Redis', 'Vue.js', 'AWS'],
     liveUrl: 'https://demo-ecommerce.com',
     githubUrl: 'https://github.com/ahmed/ecommerce-platform',
