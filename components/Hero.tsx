@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { ChevronDown, Download } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export default function Hero() {
   const [isClient, setIsClient] = useState(false)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const animationRef = useRef<number>()
   
   useEffect(() => {
     setIsClient(true)
@@ -21,8 +23,9 @@ export default function Hero() {
     x: Math.random() * 100,
     y: Math.random() * 100,
     size: Math.random() * 4 + 1,
-    delay: Math.random() * 2,
-    duration: Math.random() * 3 + 2,
+    delay: 0,
+    duration: Math.random() * 20 + 30,
+    phase: Math.random() * Math.PI * 2
   })) : []
 
   // Generate geometric shapes - only on client side
@@ -32,159 +35,227 @@ export default function Hero() {
     y: Math.random() * 100,
     rotation: Math.random() * 360,
     scale: Math.random() * 0.5 + 0.5,
-    delay: Math.random() * 2,
+    delay: 0,
+    duration: 30
   })) : []
+
+  useEffect(() => {
+    if (!isClient) return
+    
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    resizeCanvas()
+    window.addEventListener('resize', resizeCanvas)
+
+    let time = 0
+    
+    const animate = () => {
+      time += 0.016
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      
+      const width = canvas.width
+      const height = canvas.height
+      
+      // Helper to convert easeInOut timing
+      const easeInOut = (t: number) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
+      
+      // Circle 1: -top-40 -right-40, w-80 h-80, primary-200, duration 8s
+      const t1 = ((time + 2000) % 2000) / 2000
+      const circle1X = 30 * Math.sin(t1 * Math.PI * 2)
+      const circle1Y = -20 * Math.sin(t1 * Math.PI * 2)
+      const circle1Scale = 1
+      const circle1Opacity = 0.7 + 0.2 * Math.sin(t1 * Math.PI * 2)
+      
+      ctx.save()
+      ctx.translate(width - 160 + circle1X, -160 + circle1Y)
+      ctx.scale(circle1Scale, circle1Scale)
+      ctx.globalAlpha = circle1Opacity
+      ctx.globalCompositeOperation = 'multiply'
+      ctx.filter = 'blur(40px)'
+      const gradient1 = ctx.createRadialGradient(160, 160, 0, 160, 160, 160)
+      gradient1.addColorStop(0, '#99f6e4')
+      gradient1.addColorStop(1, '#99f6e400')
+      ctx.fillStyle = gradient1
+      ctx.beginPath()
+      ctx.arc(160, 160, 160, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.restore()
+      
+      // Circle 2: -bottom-40 -left-40, accent-200, duration 10s, delay 1s
+      const t2 = ((time + 2000) % 2000) / 2000
+      const circle2X = -25 * Math.sin(t2 * Math.PI * 2)
+      const circle2Y = 15 * Math.sin(t2 * Math.PI * 2)
+      const circle2Scale = 1
+      const circle2Opacity = 0.7 + 0.1 * Math.sin(t2 * Math.PI * 2)
+      
+      ctx.save()
+      ctx.translate(-160 + circle2X, height + 160 + circle2Y)
+      ctx.scale(circle2Scale, circle2Scale)
+      ctx.globalAlpha = circle2Opacity
+      ctx.globalCompositeOperation = 'multiply'
+      ctx.filter = 'blur(40px)'
+      const gradient2 = ctx.createRadialGradient(160, 160, 0, 160, 160, 160)
+      gradient2.addColorStop(0, '#bfdbfe')
+      gradient2.addColorStop(1, '#bfdbfe00')
+      ctx.fillStyle = gradient2
+      ctx.beginPath()
+      ctx.arc(160, 160, 160, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.restore()
+      
+      // Circle 3: center, primary-300, duration 12s, delay 2s
+      const t3 = ((time + 2000) % 2000) / 2000
+      const ease4Points = [
+        easeInOut((t3 * 4) % 1),
+        easeInOut((t3 * 4 - 1) % 1),
+        easeInOut((t3 * 4 - 2) % 1),
+        easeInOut((t3 * 4 - 3) % 1)
+      ]
+      const circle3X = 20 * (ease4Points[0] - 0.5) - 15 * (ease4Points[2] - 0.5)
+      const circle3Y = -25 * (ease4Points[1] - 0.5) + 10 * (ease4Points[3] - 0.5)
+      const circle3Scale = 1
+      const circle3Opacity = 0.5 + 0.2 * Math.sin(t3 * Math.PI * 2)
+      
+      ctx.save()
+      ctx.translate(width / 2 + circle3X, height / 2 + circle3Y)
+      ctx.scale(circle3Scale, circle3Scale)
+      ctx.globalAlpha = circle3Opacity
+      ctx.globalCompositeOperation = 'multiply'
+      ctx.filter = 'blur(40px)'
+      const gradient3 = ctx.createRadialGradient(160, 160, 0, 160, 160, 160)
+      gradient3.addColorStop(0, '#5eead4')
+      gradient3.addColorStop(1, '#5eead400')
+      ctx.fillStyle = gradient3
+      ctx.beginPath()
+      ctx.arc(160, 160, 160, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.restore()
+      
+      // Particles
+      ctx.globalCompositeOperation = 'source-over'
+      ctx.filter = 'none'
+      particles.forEach(particle => {
+        if (time < particle.delay) return
+        const t = ((time - particle.delay) % particle.duration) / particle.duration
+        // Smooth infinite up and down oscillation with unique phase for each particle
+        const bounce = Math.sin(t * Math.PI * 2 + particle.phase)
+        const y = particle.y + 10 * bounce
+        const opacity = 0.6 + 0.4 * (Math.abs(bounce) + 1) / 2
+        const scale = 1 + 0.5 * (Math.abs(bounce) + 1) / 2
+        
+        ctx.globalAlpha = opacity
+        ctx.fillStyle = '#2dd4bf'
+        ctx.beginPath()
+        ctx.arc(width * particle.x / 100, height * y / 100, particle.size * scale / 2, 0, Math.PI * 2)
+        ctx.fill()
+      })
+      
+      // Shapes
+      shapes.forEach(shape => {
+        if (time < shape.delay) return
+        const t = ((time - shape.delay) % shape.duration) / shape.duration
+        const rotation = shape.rotation + t * 360
+        const scale = 1
+        const opacity = 0.2
+        
+        ctx.save()
+        ctx.translate(width * shape.x / 100, height * shape.y / 100)
+        ctx.rotate(rotation * Math.PI / 180)
+        ctx.scale(scale, scale)
+        ctx.globalAlpha = opacity
+        ctx.strokeStyle = '#5eead4'
+        
+        ctx.lineWidth = 2
+        ctx.strokeRect(-32, -32, 64, 64)
+        ctx.restore()
+      })
+      
+      // Orb 1: top-1/4 left-1/4, w-32 h-32
+      const t4 = ((time + 2000) % 2000) / 2000
+      const orb1X = width * 0.25 + 50 * Math.sin(t4 * Math.PI * 2) - 30 * Math.sin(t4 * Math.PI * 4)
+      const orb1Y = height * 0.25 - 40 * Math.sin(t4 * Math.PI * 2) + 20 * Math.sin(t4 * Math.PI * 4)
+      const orb1Scale = 1 + 0.3 * Math.sin(t4 * Math.PI * 2) - 0.2 * Math.sin(t4 * Math.PI * 4)
+      
+      ctx.save()
+      ctx.translate(orb1X, orb1Y)
+      ctx.scale(orb1Scale, orb1Scale)
+      ctx.globalAlpha = 0.3
+      ctx.filter = 'blur(30px)'
+      const gradient4 = ctx.createRadialGradient(-32, -32, 0, 0, 0, 128)
+      gradient4.addColorStop(0, '#2dd4bf')
+      gradient4.addColorStop(1, '#60a5fa')
+      ctx.fillStyle = gradient4
+      ctx.beginPath()
+      ctx.arc(0, 0, 128, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.restore()
+      
+      // Orb 2: bottom-1/4 right-1/4, w-24 h-24, delay 3s
+      const t5 = ((time + 2000) % 2000) / 2000
+      const orb2X = width * 0.75 - 20 * Math.sin(t5 * Math.PI * 2) + 10 * Math.sin(t5 * Math.PI * 4)
+      const orb2Y = height * 0.75 + 10 * Math.sin(t5 * Math.PI * 2) - 10 * Math.sin(t5 * Math.PI * 4)
+      const orb2Scale = 1 - 0.3 * Math.sin(t5 * Math.PI * 2) + 0.2 * Math.sin(t5 * Math.PI * 4)
+      
+      ctx.save()
+      ctx.translate(orb2X, orb2Y)
+      ctx.scale(orb2Scale, orb2Scale)
+      ctx.globalAlpha = 0.25
+      ctx.filter = 'blur(30px)'
+      const gradient5 = ctx.createRadialGradient(-24, -24, 0, 0, 0, 96)
+      gradient5.addColorStop(0, '#60a5fa')
+      gradient5.addColorStop(1, '#2dd4bf')
+      ctx.fillStyle = gradient5
+      ctx.beginPath()
+      ctx.arc(0, 0, 96, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.restore()
+      
+      // Grid
+      ctx.save()
+      ctx.globalAlpha = 0.05
+      ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)'
+      ctx.lineWidth = 1
+      const gridOffset = (time % 20) * 50
+      for (let x = (gridOffset % 50) - 50; x < width; x += 50) {
+        ctx.beginPath()
+        ctx.moveTo(x, 0)
+        ctx.lineTo(x, height)
+        ctx.stroke()
+      }
+      for (let y = (gridOffset % 50) - 50; y < height; y += 50) {
+        ctx.beginPath()
+        ctx.moveTo(0, y)
+        ctx.lineTo(width, y)
+        ctx.stroke()
+      }
+      ctx.restore()
+      
+      animationRef.current = requestAnimationFrame(animate)
+    }
+    
+    animationRef.current = requestAnimationFrame(animate)
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+      window.removeEventListener('resize', resizeCanvas)
+    }
+  }, [isClient, particles, shapes])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800">
       {/* Enhanced Background Animation */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Circles with Enhanced Animation */}
-        <motion.div 
-          className="absolute -top-40 -right-40 w-80 h-80 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          animate={{ 
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-            scale: [1, 1.1, 1],
-            opacity: [0.7, 0.9, 0.7]
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-        />
-        <motion.div 
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          animate={{ 
-            x: [0, -25, 0],
-            y: [0, 15, 0],
-            scale: [1, 1.2, 1],
-            opacity: [0.7, 0.8, 0.7]
-          }}
-          transition={{ 
-            duration: 10, 
-            repeat: Infinity, 
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
-        <motion.div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary-300 rounded-full mix-blend-multiply filter blur-xl opacity-50"
-          animate={{ 
-            x: [0, 20, -15, 0],
-            y: [0, -25, 10, 0],
-            scale: [1, 0.9, 1.1, 1],
-            opacity: [0.5, 0.7, 0.4, 0.5]
-          }}
-          transition={{ 
-            duration: 12, 
-            repeat: Infinity, 
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-
-        {/* Floating Particles */}
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute w-1 h-1 bg-primary-400 rounded-full opacity-60"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.6, 1, 0.6],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              delay: particle.delay,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-
-        {/* Animated Geometric Shapes */}
-        {shapes.map((shape) => (
-          <motion.div
-            key={shape.id}
-            className="absolute w-16 h-16 border-2 border-primary-300 opacity-20"
-            style={{
-              left: `${shape.x}%`,
-              top: `${shape.y}%`,
-              transform: `rotate(${shape.rotation}deg) scale(${shape.scale})`,
-            }}
-            animate={{
-              rotate: [shape.rotation, shape.rotation + 360],
-              scale: [shape.scale, shape.scale * 1.2, shape.scale],
-              opacity: [0.2, 0.4, 0.2],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              delay: shape.delay,
-              ease: "linear",
-            }}
-          />
-        ))}
-
-        {/* Gradient Orbs */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-primary-400 to-accent-400 rounded-full filter blur-2xl opacity-30"
-          animate={{
-            x: [0, 50, -30, 0],
-            y: [0, -40, 20, 0],
-            scale: [1, 1.3, 0.8, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-accent-400 to-primary-400 rounded-full filter blur-2xl opacity-25"
-          animate={{
-            x: [0, -40, 30, 0],
-            y: [0, 30, -20, 0],
-            scale: [1, 0.7, 1.2, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3,
-          }}
-        />
-
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <motion.div
-            className="w-full h-full"
-            style={{
-              backgroundImage: `
-                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: '50px 50px',
-            }}
-            animate={{
-              backgroundPosition: ['0px 0px', '50px 50px'],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        </div>
-      </div>
+      <canvas ref={canvasRef} className="absolute inset-0" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
