@@ -59,7 +59,7 @@ const skillCategories = [
     title: 'Testing & Automation',
     skills: [
       { name: 'PHPUnit', proficiency: 90 },
-      { name: 'Pest PHP', proficiency: 85 },
+      { name: 'Pest PHP', proficiency: 60 },
       { name: 'Selenium', proficiency: 65 },
       { name: 'Puppeteer', proficiency: 65 }
     ]
