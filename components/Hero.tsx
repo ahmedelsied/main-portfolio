@@ -18,7 +18,7 @@ export default function Hero() {
   }
 
   // Generate random particles - only on client side
-  const particles = isClient ? Array.from({ length: 50 }, (_, i) => ({
+  const particles = isClient ? Array.from({ length: 80 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
@@ -65,81 +65,6 @@ export default function Hero() {
       const width = canvas.width
       const height = canvas.height
       
-      // Helper to convert easeInOut timing
-      const easeInOut = (t: number) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
-      
-      // Circle 1: -top-40 -right-40, w-80 h-80, primary-200, duration 8s
-      const t1 = ((time + 2000) % 2000) / 2000
-      const circle1X = 30 * Math.sin(t1 * Math.PI * 2)
-      const circle1Y = -20 * Math.sin(t1 * Math.PI * 2)
-      const circle1Scale = 1
-      const circle1Opacity = 0.7 + 0.2 * Math.sin(t1 * Math.PI * 2)
-      
-      ctx.save()
-      ctx.translate(width - 160 + circle1X, -160 + circle1Y)
-      ctx.scale(circle1Scale, circle1Scale)
-      ctx.globalAlpha = circle1Opacity
-      ctx.globalCompositeOperation = 'multiply'
-      ctx.filter = 'blur(40px)'
-      const gradient1 = ctx.createRadialGradient(160, 160, 0, 160, 160, 160)
-      gradient1.addColorStop(0, '#99f6e4')
-      gradient1.addColorStop(1, '#99f6e400')
-      ctx.fillStyle = gradient1
-      ctx.beginPath()
-      ctx.arc(160, 160, 160, 0, Math.PI * 2)
-      ctx.fill()
-      ctx.restore()
-      
-      // Circle 2: -bottom-40 -left-40, accent-200, duration 10s, delay 1s
-      const t2 = ((time + 2000) % 2000) / 2000
-      const circle2X = -25 * Math.sin(t2 * Math.PI * 2)
-      const circle2Y = 15 * Math.sin(t2 * Math.PI * 2)
-      const circle2Scale = 1
-      const circle2Opacity = 0.7 + 0.1 * Math.sin(t2 * Math.PI * 2)
-      
-      ctx.save()
-      ctx.translate(-160 + circle2X, height + 160 + circle2Y)
-      ctx.scale(circle2Scale, circle2Scale)
-      ctx.globalAlpha = circle2Opacity
-      ctx.globalCompositeOperation = 'multiply'
-      ctx.filter = 'blur(40px)'
-      const gradient2 = ctx.createRadialGradient(160, 160, 0, 160, 160, 160)
-      gradient2.addColorStop(0, '#bfdbfe')
-      gradient2.addColorStop(1, '#bfdbfe00')
-      ctx.fillStyle = gradient2
-      ctx.beginPath()
-      ctx.arc(160, 160, 160, 0, Math.PI * 2)
-      ctx.fill()
-      ctx.restore()
-      
-      // Circle 3: center, primary-300, duration 12s, delay 2s
-      const t3 = ((time + 2000) % 2000) / 2000
-      const ease4Points = [
-        easeInOut((t3 * 4) % 1),
-        easeInOut((t3 * 4 - 1) % 1),
-        easeInOut((t3 * 4 - 2) % 1),
-        easeInOut((t3 * 4 - 3) % 1)
-      ]
-      const circle3X = 20 * (ease4Points[0] - 0.5) - 15 * (ease4Points[2] - 0.5)
-      const circle3Y = -25 * (ease4Points[1] - 0.5) + 10 * (ease4Points[3] - 0.5)
-      const circle3Scale = 1
-      const circle3Opacity = 0.5 + 0.2 * Math.sin(t3 * Math.PI * 2)
-      
-      ctx.save()
-      ctx.translate(width / 2 + circle3X, height / 2 + circle3Y)
-      ctx.scale(circle3Scale, circle3Scale)
-      ctx.globalAlpha = circle3Opacity
-      ctx.globalCompositeOperation = 'multiply'
-      ctx.filter = 'blur(40px)'
-      const gradient3 = ctx.createRadialGradient(160, 160, 0, 160, 160, 160)
-      gradient3.addColorStop(0, '#5eead4')
-      gradient3.addColorStop(1, '#5eead400')
-      ctx.fillStyle = gradient3
-      ctx.beginPath()
-      ctx.arc(160, 160, 160, 0, Math.PI * 2)
-      ctx.fill()
-      ctx.restore()
-      
       // Particles
       ctx.globalCompositeOperation = 'source-over'
       ctx.filter = 'none'
@@ -178,46 +103,6 @@ export default function Hero() {
         ctx.strokeRect(-32, -32, 64, 64)
         ctx.restore()
       })
-      
-      // Orb 1: top-1/4 left-1/4, w-32 h-32
-      const t4 = ((time + 2000) % 2000) / 2000
-      const orb1X = width * 0.25 + 50 * Math.sin(t4 * Math.PI * 2) - 30 * Math.sin(t4 * Math.PI * 4)
-      const orb1Y = height * 0.25 - 40 * Math.sin(t4 * Math.PI * 2) + 20 * Math.sin(t4 * Math.PI * 4)
-      const orb1Scale = 1 + 0.3 * Math.sin(t4 * Math.PI * 2) - 0.2 * Math.sin(t4 * Math.PI * 4)
-      
-      ctx.save()
-      ctx.translate(orb1X, orb1Y)
-      ctx.scale(orb1Scale, orb1Scale)
-      ctx.globalAlpha = 0.3
-      ctx.filter = 'blur(30px)'
-      const gradient4 = ctx.createRadialGradient(-32, -32, 0, 0, 0, 128)
-      gradient4.addColorStop(0, '#2dd4bf')
-      gradient4.addColorStop(1, '#60a5fa')
-      ctx.fillStyle = gradient4
-      ctx.beginPath()
-      ctx.arc(0, 0, 128, 0, Math.PI * 2)
-      ctx.fill()
-      ctx.restore()
-      
-      // Orb 2: bottom-1/4 right-1/4, w-24 h-24, delay 3s
-      const t5 = ((time + 2000) % 2000) / 2000
-      const orb2X = width * 0.75 - 20 * Math.sin(t5 * Math.PI * 2) + 10 * Math.sin(t5 * Math.PI * 4)
-      const orb2Y = height * 0.75 + 10 * Math.sin(t5 * Math.PI * 2) - 10 * Math.sin(t5 * Math.PI * 4)
-      const orb2Scale = 1 - 0.3 * Math.sin(t5 * Math.PI * 2) + 0.2 * Math.sin(t5 * Math.PI * 4)
-      
-      ctx.save()
-      ctx.translate(orb2X, orb2Y)
-      ctx.scale(orb2Scale, orb2Scale)
-      ctx.globalAlpha = 0.25
-      ctx.filter = 'blur(30px)'
-      const gradient5 = ctx.createRadialGradient(-24, -24, 0, 0, 0, 96)
-      gradient5.addColorStop(0, '#60a5fa')
-      gradient5.addColorStop(1, '#2dd4bf')
-      ctx.fillStyle = gradient5
-      ctx.beginPath()
-      ctx.arc(0, 0, 96, 0, Math.PI * 2)
-      ctx.fill()
-      ctx.restore()
       
       // Grid
       ctx.save()
