@@ -30,7 +30,7 @@ const skillCategories = [
     skills: [
       { name: 'MySQL', proficiency: 90 },
       { name: 'PostgreSQL', proficiency: 85 },
-      { name: 'MongoDB', proficiency: 70 }
+      { name: 'MongoDB', proficiency: 50 }
     ]
   },
   {
