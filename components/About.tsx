@@ -47,9 +47,9 @@ const skillCategories = [
     icon: Cloud,
     title: 'DevOps',
     skills: [
-      { name: 'Docker', proficiency: 60 },
+      { name: 'Docker', proficiency: 50 },
       { name: 'AWS', proficiency: 50 },
-      { name: 'Linux', proficiency: 70 },
+      { name: 'Linux', proficiency: 60 },
       { name: 'Git', proficiency: 95 },
       { name: 'CI/CD', proficiency: 75 }
     ]

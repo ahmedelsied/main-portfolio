@@ -10,6 +10,20 @@
   
   body {
     font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Prevent rendering artifacts on scroll */
+  main {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  section {
+    isolation: isolate;
+    contain: layout style paint;
   }
 }
 
