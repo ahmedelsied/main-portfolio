@@ -213,7 +213,9 @@ export default function Experience() {
                   </div>
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                      {award.title}
+                      <a href="https://developer.huawei.com/consumer/en/activity/digixActivity/digixWinnersDetail/201655277856046898" target="_blank" title="Details about the {{ award.title }} award">
+                        {{ award.title }}
+                      </a>
                     </h4>
                     <p className="text-primary-600 font-semibold mb-2">
                       {award.event}
